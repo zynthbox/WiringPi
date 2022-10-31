@@ -134,7 +134,13 @@ fi
     check_make_ok
     $sudo make install-static
   else
-    make -j5
+    # If script is running in salsaci then add wiringpi include files when building
+    if [ $(whoami) = "salsaci" ]; then
+      make -j$(nproc) INCLUDE='-I. -I../wiringPi'
+    else
+      make -j5
+    fi
+    
     check_make_ok
     $sudo make install
   fi
