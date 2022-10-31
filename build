@@ -151,7 +151,7 @@ fi
   cd ../gpio
   # If script is running in salsaci then add wiringpi include files when building
   if [ $(whoami) = "salsaci" ]; then
-    make -j$(nproc) INCLUDE='-I. -I../wiringPi'
+    make -j$(nproc) INCLUDE='-I. -I../wiringPi -I../devLib'
   else
     make -j$(nproc)
   fi
